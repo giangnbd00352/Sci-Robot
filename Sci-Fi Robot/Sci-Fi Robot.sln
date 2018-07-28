@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sci-Fi Robot", "Assembly-CSharp.csproj", "{FFABC4C4-0CC2-D204-7FDB-9097947BD52B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sci-Fi Robot", "Assembly-CSharp-Editor.csproj", "{9EA2DD43-BF63-2A65-D08E-5D70FC11E983}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFABC4C4-0CC2-D204-7FDB-9097947BD52B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFABC4C4-0CC2-D204-7FDB-9097947BD52B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFABC4C4-0CC2-D204-7FDB-9097947BD52B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFABC4C4-0CC2-D204-7FDB-9097947BD52B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EA2DD43-BF63-2A65-D08E-5D70FC11E983}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EA2DD43-BF63-2A65-D08E-5D70FC11E983}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EA2DD43-BF63-2A65-D08E-5D70FC11E983}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EA2DD43-BF63-2A65-D08E-5D70FC11E983}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
