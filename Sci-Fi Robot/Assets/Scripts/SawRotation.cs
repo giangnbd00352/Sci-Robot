@@ -12,7 +12,7 @@ public class SawRotation : MonoBehaviour {
 	void Start () {
         audioManager = AudioManager.instance;
 
-        audioManager.PlaySound("Saw Sound");
+        audioManager.PlaySound("Band Saw");
 
     }
 	

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class UIGame : MonoBehaviour {
 
     public Button btnBullet;
+    public Button btnPause;
     public GameObject panelBullet;
     //public GameObject panelLoading;
 
@@ -13,13 +14,19 @@ public class UIGame : MonoBehaviour {
 	void Awake () {
         btnBullet.onClick.AddListener(() => {
             //panelLoading.SetActive(true);
+            btnPause.gameObject.SetActive(false);
+            btnBullet.gameObject.SetActive(false);
             panelBullet.SetActive(true);
         });
 
         btnExit.onClick.AddListener(() => {
             //panelLoading.SetActive(true);
+            btnPause.gameObject.SetActive(true);
+            btnBullet.gameObject.SetActive(true);
             panelBullet.SetActive(false);
         });
+
+        
     }
 
 }

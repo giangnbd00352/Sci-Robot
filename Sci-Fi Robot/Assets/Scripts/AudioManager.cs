@@ -42,6 +42,24 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
+    public AudioMixer audioMixer;
+
+    public void SetMasterVolume(float masterLv)
+    {
+        audioMixer.SetFloat("MasterVolume", masterLv);
+    }
+
+    public void SetSFXVolume(float sfxLv)
+    {
+        audioMixer.SetFloat("SFXVolume", sfxLv);
+    }
+
+    public void SetMusicVolume(float musicLv)
+    {
+        audioMixer.SetFloat("MusicVolume", musicLv);
+    }
+
+
     [SerializeField]
     Sound[] sound;
 

@@ -7,6 +7,8 @@ TagManager:
   - Saw
   - Acid
   - Spike
+  - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -55,4 +57,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3237133935
+    locked: 0
+  - name: UI
+    uniqueID: 1748572099
     locked: 0

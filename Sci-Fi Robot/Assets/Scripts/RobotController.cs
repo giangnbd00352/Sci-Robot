@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class RobotController : MonoBehaviour {
 
+    //check silde
+    bool sliding = false;
+
+    //store the slide time
+    float slideTime = 0f;
+
+    //set the maximum time slide
+    public float maxSlideTime = 1.5f;
+
+    //reference to the health collider game object
+    [SerializeField]
+    GameObject healthCollider;
+
     //how fast robot can move
     public float maxSpeed = 10f;
     //robot direction
@@ -29,6 +42,10 @@ public class RobotController : MonoBehaviour {
 
     //variable check doubleJump
     bool doubleJump;
+
+    public Transform muzzle;
+
+    public GameObject bullet;
 
     void Start()
     {
@@ -69,6 +86,11 @@ public class RobotController : MonoBehaviour {
 
     void Update()
     {
+        GetInputMovement();
+    }
+
+    void GetInputMovement()
+    {
         if ((grounded || !doubleJump) && Input.GetKeyDown(KeyCode.Space))
         {
             //not on the ground
@@ -79,6 +101,63 @@ public class RobotController : MonoBehaviour {
 
             if (!doubleJump && !grounded)
                 doubleJump = true;
+        }
+
+        else if ((!grounded || !doubleJump) && Input.GetKeyDown(KeyCode.Space))
+            anim.SetBool("DoubleJumping", doubleJump);
+
+        if(Input.GetKeyDown(KeyCode.LeftShift) && !sliding)
+        {
+            Time.timeScale = 0;
+            slideTime = 0f;
+
+            anim.SetBool("isSliding", true);
+
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
+            healthCollider.GetComponent<CapsuleCollider2D>().enabled = false;
+
+            sliding = true;
+
+        }
+
+        if (sliding)
+        {
+            slideTime += Time.deltaTime;
+
+            if (slideTime > maxSlideTime)
+            {
+                sliding = false;
+
+                anim.SetBool("isSliding", false);
+
+                gameObject.GetComponent<BoxCollider2D>().enabled = true;
+
+                healthCollider.GetComponent<CapsuleCollider2D>().enabled = true;
+            }
+        }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            GameObject mBullet = Instantiate(bullet, muzzle.position, muzzle.rotation);
+
+            mBullet.transform.parent = GameObject.Find("GameManager").transform;
+
+            mBullet.GetComponent<Renderer>().sortingLayerName = "Player";
+
+            anim.SetBool("isShooting", true);
+        }
+
+        if (Input.GetButtonUp("Fire1"))
+        {
+            anim.SetBool("isShooting", false);
+            anim.SetBool("isRunShoot", false);
+        }
+
+        if (Input.GetButtonDown("Fire1") && GetComponent<Rigidbody2D>().velocity.x != 0)
+        {
+            anim.SetBool("isRunShoot", true);
+
         }
     }
 

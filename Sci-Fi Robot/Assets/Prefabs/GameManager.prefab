@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1283416422645502}
+  m_IsPrefabParent: 1
+--- !u!1 &1283416422645502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4273124451225232}
+  - component: {fileID: 114125323304905912}
+  - component: {fileID: 114740017400830334}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4273124451225232
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1283416422645502}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.4942784, y: -0.5491744, z: -9.26292}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114125323304905912
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1283416422645502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1086aca51ba2fda43bb22c2e5824cccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound:
+  - audioMixerGroup: {fileID: 243713226473264600, guid: bba148ae6a5d1564ebfadb45e044e34c,
+      type: 2}
+    clipName: Action Theme
+    clip: {fileID: 8300000, guid: 09164e2b10a897a429a742f35abc1e0f, type: 3}
+    volume: 0.419
+    pitch: 1
+    loop: 1
+    PlayOnAwake: 0
+  - audioMixerGroup: {fileID: 243017967726920768, guid: bba148ae6a5d1564ebfadb45e044e34c,
+      type: 2}
+    clipName: Band Saw
+    clip: {fileID: 8300000, guid: 3a4f83501a71b88488c3af9a294df006, type: 3}
+    volume: 0.419
+    pitch: 1
+    loop: 0
+    PlayOnAwake: 0
+--- !u!114 &114740017400830334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1283416422645502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b0a046dbc574b4c8e1cccf52a05340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PauseWindow: {fileID: 0}
+  OptionsWindow: {fileID: 0}
+  HelpWindow: {fileID: 0}
+  MenuUI: {fileID: 0}
+  btnPause: {fileID: 0}

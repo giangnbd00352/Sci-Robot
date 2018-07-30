@@ -1,65 +1,76 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour {
 
-    Animator anim;
+    //Animator anim;
 
-    [SerializeField]
-    GameObject DoorType;
+    //[SerializeField]
+    //GameObject DoorType;
 
-    int stateOfDoor = 1;
-	// Use this for initialization
-	void Start () {
-        anim = GetComponent<Animator>();
+    //int stateOfDoor = 1;
+    public int nextLevel;
 
-        if (DoorType.name == "EntryDoor")
-           anim.SetFloat("DoorStatus", 3);
-
-        if (DoorType.name == "ExitDoor")
-            LockDoor();
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+            SceneManager.LoadScene(nextLevel);
     }
 
-    void LockDoor()
+    // Use this for initialization
+    void Start()
     {
-        if (DoorType.name == "ExitDoor")
-        {
-            anim.SetFloat("DoorStatus", 1);
-            stateOfDoor = 1;
-        }
-    }
+        //    anim = GetComponent<Animator>();
 
-    void UnLockDoor()
-    {
-        if (DoorType.name == "ExitDoor")
-        {
-            anim.SetFloat("DoorStatus", 2);
-            stateOfDoor = 2;
-        }
-    }
+        //    if (DoorType.name == "EntryDoor")
+        //       anim.SetFloat("DoorStatus", 3);
 
-    void OpenDoor()
-    {
-        if (DoorType.name == "ExitDoor")
-        {
-            anim.SetFloat("DoorStatus", 3);
-            stateOfDoor = 3;
-        }
-    }
+        //    if (DoorType.name == "ExitDoor")
+        //        LockDoor();
+        //}
 
-    public void SetDoorState(int state)
-    {
-        if (state == 1 && DoorType.name == "ExitDoor")
-            LockDoor();
-        if (state == 2 && DoorType.name == "ExitDoor")
-            UnLockDoor();
-        if (state == 3 && DoorType.name == "ExitDoor")
-            OpenDoor();
-    }
+        //void LockDoor()
+        //{
+        //    if (DoorType.name == "ExitDoor")
+        //    {
+        //        anim.SetFloat("DoorStatus", 1);
+        //        stateOfDoor = 1;
+        //    }
+        //}
 
-    public int GetDoorState()
-    {
-        return stateOfDoor;
+        //void UnLockDoor()
+        //{
+        //    if (DoorType.name == "ExitDoor")
+        //    {
+        //        anim.SetFloat("DoorStatus", 2);
+        //        stateOfDoor = 2;
+        //    }
+        //}
+
+        //void OpenDoor()
+        //{
+        //    if (DoorType.name == "ExitDoor")
+        //    {
+        //        anim.SetFloat("DoorStatus", 3);
+        //        stateOfDoor = 3;
+        //    }
+        //}
+
+        //public void SetDoorState(int state)
+        //{
+        //    if (state == 1 && DoorType.name == "ExitDoor")
+        //        LockDoor();
+        //    if (state == 2 && DoorType.name == "ExitDoor")
+        //        UnLockDoor();
+        //    if (state == 3 && DoorType.name == "ExitDoor")
+        //        OpenDoor();
+        //}
+
+        //public int GetDoorState()
+        //{
+        //    return stateOfDoor;
+        //}
     }
 }
