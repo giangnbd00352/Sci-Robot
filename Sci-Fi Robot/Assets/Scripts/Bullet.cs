@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour {
 
     public float bulletSpeed;
 
-    public RobotController robot;
+    RobotController robot;
 
 
 	// Use this for initialization
@@ -24,8 +24,17 @@ public class Bullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
         Destroy(gameObject, 2f);
 	}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

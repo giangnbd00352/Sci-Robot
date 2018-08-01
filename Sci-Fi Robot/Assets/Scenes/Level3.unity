@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -599,6 +599,11 @@ Prefab:
       propertyPath: OptionsWindow
       value: 
       objectReference: {fileID: 1113875026}
+    - target: {fileID: 114740017400830334, guid: c3ea1734ff96db142b77d2c982027ce2,
+        type: 2}
+      propertyPath: Robot
+      value: 
+      objectReference: {fileID: 1787395215}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3ea1734ff96db142b77d2c982027ce2, type: 2}
   m_IsPrefabParent: 0
@@ -4815,6 +4820,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91da0898e2b8bac41b7abd76fcad09dc, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1787395215 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1059152614356658, guid: bc00d0fb816177e4dbad36373f27db0b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1872653968}
 --- !u!1 &1792385277
 GameObject:
   m_ObjectHideFlags: 0

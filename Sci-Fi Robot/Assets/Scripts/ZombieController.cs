@@ -18,8 +18,6 @@ public class ZombieController : MonoBehaviour {
 
     private Animator anim;
 
-    private Rigidbody2D rigid;
-
     public RobotController robotController;
 
     public float attackDamage = 2f;
@@ -29,7 +27,6 @@ public class ZombieController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         anim = GetComponent<Animator>();
-        rigid = GetComponent<Rigidbody2D>();
     }
 	
 	// Update is called once per frame
@@ -62,11 +59,11 @@ public class ZombieController : MonoBehaviour {
 
                 if (facingLeft)
                 {
-                    this.transform.Translate(Vector3.left * (Time.deltaTime * moveSpeed));
+                    transform.Translate(new Vector3(moveSpeed * Time.deltaTime, 0, 0));
                 }
                 else if (!facingLeft)
                 {
-                    this.transform.Translate(Vector3.right * (Time.deltaTime * moveSpeed));
+                    transform.Translate(new Vector3(moveSpeed * Time.deltaTime, 0, 0));
                 }
             }
 
@@ -106,8 +103,9 @@ public class ZombieController : MonoBehaviour {
 
             if (health <= 0)
             {
+                healthBar.GetComponent<Transform>().localScale = new Vector3(0, 0, 0);
                 anim.SetBool("isDead", true);
-                Destroy(gameObject, 2);
+                Destroy(gameObject, 1.4f);
             }            
         }
     }

@@ -21,7 +21,6 @@ public class PlayerHealth : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         anim = Robot.GetComponent<Animator>();
-
         healthBar.value = maxHealth;
         currentHealth = healthBar.value;
 
