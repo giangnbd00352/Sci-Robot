@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ZombieController : MonoBehaviour {
-
-    public float health = 100f;
 
     public Transform target;
 
@@ -22,7 +21,9 @@ public class ZombieController : MonoBehaviour {
 
     public float attackDamage = 2f;
 
-    public SpriteRenderer healthBar;
+    public Slider healthBar;
+
+    public Text healthText;
 
     // Use this for initialization
     void Start () {
@@ -56,15 +57,17 @@ public class ZombieController : MonoBehaviour {
             {
                 anim.SetBool("isWalk", true);
                 Debug.DrawLine(target.position, this.transform.position, Color.yellow);
-
                 if (facingLeft)
-                {
-                    transform.Translate(new Vector3(moveSpeed * Time.deltaTime, 0, 0));
+                {                 
+                    transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+                    healthText.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, 0);
                 }
                 else if (!facingLeft)
                 {
-                    transform.Translate(new Vector3(moveSpeed * Time.deltaTime, 0, 0));
+                    transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+                    healthText.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 180, 0);
                 }
+                
             }
 
 
@@ -76,15 +79,15 @@ public class ZombieController : MonoBehaviour {
                 {
                     robotController.GetComponentInChildren<PlayerHealth>().currentHealth -= attackDamage;
                 }
-               
+
             }
 
-        } 
+        }
         else if (Vector3.Distance(target.position, this.transform.position) > engaugeDistance)
         {
             Debug.DrawLine(target.position, this.transform.position, Color.green);
         }
-	}
+    }
 
     private void Flip()
     {
@@ -94,19 +97,15 @@ public class ZombieController : MonoBehaviour {
         transform.localScale = theScale;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void addDamage(float damage)
     {
-        if (collision.gameObject.tag == "Bullet")
+        Debug.Log(damage);
+        healthBar.value -= damage;
+        healthText.text = healthBar.value.ToString() + "%";
+        if (healthBar.value <= 0)
         {
-            health -= 10;
-            healthBar.GetComponent<Transform>().localScale -= new Vector3(.1f, 0, 0);
-
-            if (health <= 0)
-            {
-                healthBar.GetComponent<Transform>().localScale = new Vector3(0, 0, 0);
-                anim.SetBool("isDead", true);
-                Destroy(gameObject, 1.4f);
-            }            
+            anim.SetBool("isDead", true);
+            Destroy(gameObject, 2f);
         }
     }
 }

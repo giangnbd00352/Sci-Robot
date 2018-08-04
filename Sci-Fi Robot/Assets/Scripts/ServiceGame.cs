@@ -17,6 +17,11 @@ public class ServiceGame : MonoBehaviour {
     // Use this for initialization
     void Start () {
         robot = FindObjectOfType<RobotController>();
+        panelDescription.transform.GetChild(0).GetComponent<Image>().sprite = lstLibraries.GetComponent<ItemImage>().lstImages[1];
+        GameObject newBullet = lstLibraries.GetComponent<lstBullets>().Bullets[1];
+        newBullet.GetComponent<Bullet>().bulletSpeed = 100;
+        newBullet.GetComponent<Bullet>().bulletDamage = 15;
+        robot.bullet = newBullet;
     }
 
     IEnumerator ItemGame()
@@ -60,6 +65,7 @@ public class ServiceGame : MonoBehaviour {
                     {
                         GameObject newBullet = lstLibraries.GetComponent<lstBullets>().Bullets[int.Parse(image)];
                         newBullet.GetComponent<Bullet>().bulletSpeed = float.Parse(speed);
+                        newBullet.GetComponent<Bullet>().bulletDamage = float.Parse(damage);
                         robot.bullet = newBullet;
                     });
                     

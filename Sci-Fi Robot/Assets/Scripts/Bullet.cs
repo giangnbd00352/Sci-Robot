@@ -6,6 +6,8 @@ public class Bullet : MonoBehaviour {
 
     public float bulletSpeed;
 
+    public float bulletDamage;
+
     RobotController robot;
 
 
@@ -34,6 +36,8 @@ public class Bullet : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            ZombieController zombie = collision.gameObject.GetComponent<ZombieController>();
+            zombie.addDamage(bulletDamage);
             Destroy(gameObject);
         }
     }

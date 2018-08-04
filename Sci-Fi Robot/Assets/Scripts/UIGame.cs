@@ -7,6 +7,7 @@ public class UIGame : MonoBehaviour {
     public Button btnBullet;
     public Button btnPause;
     public GameObject panelBullet;
+    public GameObject Robot;
     //public GameObject panelLoading;
 
     public Button btnExit;

@@ -139,6 +139,7 @@ public class RobotController : MonoBehaviour {
 
         if (Input.GetButtonDown("Fire1"))
         {
+
             GameObject mBullet = Instantiate(bullet, muzzle.position, muzzle.rotation);
 
             mBullet.transform.parent = GameObject.Find("GameManager").transform;

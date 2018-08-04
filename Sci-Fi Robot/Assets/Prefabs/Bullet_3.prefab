@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212389641906739338}
   - component: {fileID: 50485293153047954}
   - component: {fileID: 114425461652257822}
+  - component: {fileID: 60986435491320500}
   m_Layer: 0
   m_Name: Bullet_3
   m_TagString: Untagged
@@ -62,6 +63,56 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
+--- !u!60 &60986435491320500
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1659045293880730}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 1.89}
+    newSize: {x: 3, y: 1.89}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.52, y: -0.945}
+      - {x: 0.64, y: -0.92499995}
+      - {x: 1.03, y: -0.715}
+      - {x: 1.25, y: -0.465}
+      - {x: 1.37, y: -0.255}
+      - {x: 1.37, y: 0.065}
+      - {x: 1.28, y: 0.265}
+      - {x: 1.18, y: 0.385}
+      - {x: 1.06, y: 0.515}
+      - {x: 0.71999997, y: 0.73499995}
+      - {x: 0.52, y: 0.78499997}
+      - {x: -0.7, y: 0.78499997}
+      - {x: -0.71999997, y: 0.765}
+      - {x: -0.72999996, y: 0.72499996}
+      - {x: -0.88, y: 0.765}
+      - {x: -1.26, y: 0.765}
+      - {x: -1.3299999, y: 0.72499996}
+      - {x: -1.35, y: 0.66499996}
+      - {x: -1.39, y: 0.385}
+      - {x: -1.39, y: -0.39499998}
+      - {x: -1.38, y: -0.515}
+      - {x: -1.3399999, y: -0.865}
+      - {x: -1.29, y: -0.945}
+      - {x: -0.84, y: -0.945}
+      - {x: -0.78, y: -0.865}
+      - {x: -0.7, y: -0.945}
 --- !u!114 &114425461652257822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -73,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be51ad04e0ac4942a0eababcca95f66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 0
+  bulletSpeed: 90
 --- !u!212 &212389641906739338
 SpriteRenderer:
   m_ObjectHideFlags: 1
