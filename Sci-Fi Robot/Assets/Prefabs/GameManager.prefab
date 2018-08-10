@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1086aca51ba2fda43bb22c2e5824cccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioMixer: {fileID: 0}
   sound:
   - audioMixerGroup: {fileID: 243713226473264600, guid: bba148ae6a5d1564ebfadb45e044e34c,
       type: 2}
@@ -65,6 +66,38 @@ MonoBehaviour:
       type: 2}
     clipName: Band Saw
     clip: {fileID: 8300000, guid: 3a4f83501a71b88488c3af9a294df006, type: 3}
+    volume: 0.419
+    pitch: 1
+    loop: 0
+    PlayOnAwake: 0
+  - audioMixerGroup: {fileID: 243017967726920768, guid: bba148ae6a5d1564ebfadb45e044e34c,
+      type: 2}
+    clipName: Shoot
+    clip: {fileID: 8300000, guid: e7fe9a293f7f0cc41b57f06e86e66ab5, type: 3}
+    volume: 0.419
+    pitch: 1
+    loop: 0
+    PlayOnAwake: 0
+  - audioMixerGroup: {fileID: 243017967726920768, guid: bba148ae6a5d1564ebfadb45e044e34c,
+      type: 2}
+    clipName: Jump
+    clip: {fileID: 8300000, guid: d28f72b322ced2e41958dc52a1c233d7, type: 3}
+    volume: 0.419
+    pitch: 1
+    loop: 0
+    PlayOnAwake: 0
+  - audioMixerGroup: {fileID: 243017967726920768, guid: bba148ae6a5d1564ebfadb45e044e34c,
+      type: 2}
+    clipName: Bonus
+    clip: {fileID: 8300000, guid: 9c127d7cd5b46ab4e80ea5ebb5fd5486, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    PlayOnAwake: 0
+  - audioMixerGroup: {fileID: 243017967726920768, guid: bba148ae6a5d1564ebfadb45e044e34c,
+      type: 2}
+    clipName: Slide
+    clip: {fileID: 8300000, guid: 8623bc1e07b8da7469395552fe2b5ae2, type: 3}
     volume: 0.419
     pitch: 1
     loop: 0
@@ -85,3 +118,4 @@ MonoBehaviour:
   HelpWindow: {fileID: 0}
   MenuUI: {fileID: 0}
   btnPause: {fileID: 0}
+  Robot: {fileID: 0}

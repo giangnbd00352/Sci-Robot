@@ -99,7 +99,6 @@ public class ZombieController : MonoBehaviour {
 
     public void addDamage(float damage)
     {
-        Debug.Log(damage);
         healthBar.value -= damage;
         healthText.text = healthBar.value.ToString() + "%";
         if (healthBar.value <= 0)

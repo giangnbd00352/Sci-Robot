@@ -18,16 +18,16 @@ public class PlayerHealth : MonoBehaviour {
 
     public float maxHealth = 100;
     public float currentHealth;
+
 	// Use this for initialization
 	void Start () {
         anim = Robot.GetComponent<Animator>();
         healthBar.value = maxHealth;
-        currentHealth = healthBar.value;
-
+        currentHealth = healthBar.value;  
     }
 
     void OnTriggerStay2D(Collider2D collision)
-    {
+    {       
         if (collision.gameObject.tag == "Saw")
         {
             healthBar.value -= 1.5f;
@@ -45,6 +45,21 @@ public class PlayerHealth : MonoBehaviour {
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //Debug.Log(collision.transform.name);
+        if (collision.gameObject.tag == "FireBall")
+        {
+            Destroy(collision.gameObject);
+            healthBar.value -= 0.2f;
+            if (healthBar.value <= 0)
+            {
+                // Debug.Log("OverGame");
+                Destroy(collision.gameObject);
+            }
+        }
+    }
+
     void Update()
     {
         healthBar.value = currentHealth;
@@ -54,7 +69,7 @@ public class PlayerHealth : MonoBehaviour {
         {
             //play animation dead
             anim.SetBool("isDead", true);
-            Robot.GetComponent<RobotController>().enabled = false;
+            Robot.GetComponent<RobotController>().RobotAction = false;
             DeathUI.gameObject.SetActive(true);
         }
             

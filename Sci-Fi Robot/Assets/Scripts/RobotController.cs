@@ -47,10 +47,16 @@ public class RobotController : MonoBehaviour {
 
     public GameObject bullet;
 
+    public bool RobotAction;
+
+    AudioManager audioManager;
+
+
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        RobotAction = true;
 
         //Start game set dead is false
         anim.SetBool("isDead", false);
@@ -59,40 +65,47 @@ public class RobotController : MonoBehaviour {
     // FixedUpdate is called once timestep
     void FixedUpdate () {
 
-        //true or false did the ground tranform hit the whatIsGround with the groundRadius
-        grounded = Physics2D.OverlapCircle(groundcheck.position, groundRadius, whatIsGround);
 
-        //touch grounded reset doubleJump
-        if (grounded)
-            doubleJump = false;
+            //true or false did the ground tranform hit the whatIsGround with the groundRadius
+            grounded = Physics2D.OverlapCircle(groundcheck.position, groundRadius, whatIsGround);
 
-        //tell the animator that we are grounded
-        anim.SetBool("Ground", grounded);
+            //touch grounded reset doubleJump
+            if (grounded)
+                doubleJump = false;
 
-        anim.SetFloat("vSpeed", rigid.velocity.y);
+            //tell the animator that we are grounded
+            anim.SetBool("Ground", grounded);
 
-        //get move direction
-        float move = Input.GetAxis("Horizontal");
+            anim.SetFloat("vSpeed", rigid.velocity.y);
 
-        rigid.velocity = new Vector3(move * maxSpeed, rigid.velocity.y, 0);
+        if (RobotAction)
+        {
+            //get move direction
+            float move = Input.GetAxis("Horizontal");
 
-        anim.SetFloat("Speed", Mathf.Abs(move));
+            rigid.velocity = new Vector3(move * maxSpeed, rigid.velocity.y, 0);
 
-        if (move > 0 && !facingRight)
-            Flip();
-        else if (move < 0 && facingRight)
-            Flip();
+            anim.SetFloat("Speed", Mathf.Abs(move));
+
+            if (move > 0 && !facingRight)
+                Flip();
+            else if (move < 0 && facingRight)
+                Flip();
+        }       
 	}
 
     void Update()
     {
-        GetInputMovement();
+        if (RobotAction)
+            GetInputMovement();
     }
 
     void GetInputMovement()
     {
+        audioManager = AudioManager.instance;
         if ((grounded || !doubleJump) && Input.GetKeyDown(KeyCode.Space))
         {
+            audioManager.PlaySound("Jump");
             //not on the ground
             anim.SetBool("Ground", false);
 
@@ -108,6 +121,7 @@ public class RobotController : MonoBehaviour {
 
         if(Input.GetKeyDown(KeyCode.LeftShift) && !sliding)
         {
+            audioManager.PlaySound("Slide");
             Time.timeScale = 0;
             slideTime = 0f;
 
@@ -139,6 +153,7 @@ public class RobotController : MonoBehaviour {
 
         if (Input.GetButtonDown("Fire1"))
         {
+            audioManager.PlaySound("Shoot");
 
             GameObject mBullet = Instantiate(bullet, muzzle.position, muzzle.rotation);
 
@@ -156,7 +171,8 @@ public class RobotController : MonoBehaviour {
         }
 
         if (Input.GetButtonDown("Fire1") && GetComponent<Rigidbody2D>().velocity.x != 0)
-        {
+        {           
+            audioManager.PlaySound("Shoot");
             anim.SetBool("isRunShoot", true);
 
         }

@@ -6,22 +6,23 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 public class ServiceGame : MonoBehaviour {
 
-    //public GameObject panelLoading;
+    public GameObject panelLoading;
     public GameObject panelDescription;
     public ScrollRect BulletScrollView;
     public GameObject lstLibraries;
+    public GameObject BagUI;
     public Button Select;
-   // public GameObject bulletSpieces;
+    // public GameObject bulletSpieces;
 
     RobotController robot;
     // Use this for initialization
     void Start () {
         robot = FindObjectOfType<RobotController>();
-        panelDescription.transform.GetChild(0).GetComponent<Image>().sprite = lstLibraries.GetComponent<ItemImage>().lstImages[1];
-        GameObject newBullet = lstLibraries.GetComponent<lstBullets>().Bullets[1];
-        newBullet.GetComponent<Bullet>().bulletSpeed = 100;
+        panelDescription.transform.GetChild(0).GetComponent<Image>().sprite = lstLibraries.GetComponent<ItemImage>().lstImages[0];
+        GameObject newBullet = lstLibraries.GetComponent<lstBullets>().Bullets[0];
+        newBullet.GetComponent<Bullet>().bulletSpeed = 25;
         newBullet.GetComponent<Bullet>().bulletDamage = 15;
-        robot.bullet = newBullet;
+        robot.bullet = newBullet;        
     }
 
     IEnumerator ItemGame()
@@ -35,12 +36,17 @@ public class ServiceGame : MonoBehaviour {
         }
         else
         {
-            //panelLoading.SetActive(false);
+            //Debug.Log("Load");
+            panelLoading.SetActive(false);
             string data = www.downloadHandler.text;
             var json = JSON.Parse(data);
             JSONArray items = (JSONArray)json;
-            Debug.Log("object json:" + items.Count);
-
+            // Debug.Log("object json:" + items.Count);
+            for(int i=1;i< BulletScrollView.transform.GetChild(0).GetChild(0).childCount;i++)
+            {
+                //Debug.Log("Destroy:" + BulletScrollView.transform.GetChild(0).GetChild(0).transform.name);
+                Destroy(BulletScrollView.transform.GetChild(0).GetChild(0).GetChild(i).gameObject);
+            }
             for (int i = 0; i < items.Count; i++)
             {
                 string id = json[i]["id"];
@@ -49,12 +55,12 @@ public class ServiceGame : MonoBehaviour {
                 string image = json[i]["image"];
                 string speed = json[i]["speed"];
 
+                Transform newBorder;
+                newBorder = Instantiate(BulletScrollView.transform.GetChild(0).GetChild(0).GetChild(0), BulletScrollView.transform.GetChild(0).GetChild(0).transform);
+                newBorder.gameObject.SetActive(true);
 
-                Transform newImg;
-                newImg = Instantiate(BulletScrollView.transform.GetChild(0).GetChild(0).GetChild(i), BulletScrollView.transform.GetChild(0).GetChild(0).transform);
-                newImg.gameObject.SetActive(true);
-                newImg.GetComponent<Image>().sprite = lstLibraries.GetComponent<ItemImage>().lstImages[int.Parse(id)];
-                newImg.GetComponent<Button>().onClick.AddListener(() =>
+                newBorder.GetChild(0).GetComponent<Image>().sprite = lstLibraries.GetComponent<ItemImage>().lstImages[int.Parse(id)];
+                newBorder.GetChild(0).GetComponent<Button>().onClick.AddListener(() =>
                 {
                     panelDescription.SetActive(true);
                     panelDescription.transform.GetChild(0).GetComponent<Image>().sprite = lstLibraries.GetComponent<ItemImage>().lstImages[int.Parse(id)];
@@ -67,14 +73,16 @@ public class ServiceGame : MonoBehaviour {
                         newBullet.GetComponent<Bullet>().bulletSpeed = float.Parse(speed);
                         newBullet.GetComponent<Bullet>().bulletDamage = float.Parse(damage);
                         robot.bullet = newBullet;
+                        robot.RobotAction = true;
                     });
-                    
+
                 });
             }
         }
     }
-    void Awake()
+    public void Load()
     {
+        Debug.Log("Start Load");
          StartCoroutine(ItemGame());
     }
 }
